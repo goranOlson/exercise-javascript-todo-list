@@ -66,6 +66,7 @@ h1 {
     padding: 8px 16px;
     background: navy;
     color: #fff;
+    border: 2px solid navy;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
@@ -101,3 +102,4 @@ h1 {
     padding-inline: 8px 4px;
     /* background-color: red; */
 }
+
