@@ -20,7 +20,6 @@ function addNewPost(e) {
     input.value = '';
     const id = todoList.children.length + 1;
 
-    // console.log(`--> addNewPost('${todoText}') id: ${id}`);
 
     if (todoText) {
         newPost = `
@@ -32,7 +31,7 @@ function addNewPost(e) {
         <i class="throw fas fa-trash-alt"></i>
         <i class="check fas fa-check"></i>
     </div>
-</article>`;  // fa-square
+</article>`;
         // console.log(newPost);
 
         const positionText = (flagg_add_last) ? 'beforeend' : 'afterbegin';  // Add first or last
@@ -48,17 +47,36 @@ function listClicked(e) {
     const targetClass = e.target.classList.item(0);
     // console.log(targetClass);
 
-    const postNode = e.target.parentNode.parentNode;
+    const actPost = e.target.parentNode.parentNode;  // <article id="post_1">
 
     // Action
     switch (targetClass) {
         case 'check':
-            postNode.classList.toggle('done');
+            actPost.classList.toggle('done');
             // console.log(postNode.classList);
             break;
         case 'throw':
-            postNode.remove();
+            actPost.remove();
             break;
+
+        case 'up':
+            if (actPost.previousElementSibling) {
+                const listNode = actPost.parentNode;  // todo-list
+                const previousNode = actPost.previousElementSibling;
+                const theNode = listNode.removeChild(actPost);
+                listNode.insertBefore(theNode, previousNode);
+            }
+            break;
+
+        case 'down':            
+            if (actPost.nextElementSibling) {
+                const listNode = actPost.parentNode;  // todo-list
+                const nextNextNode = (actPost.nextElementSibling.nextElementSibling) ? actPost.nextElementSibling.nextElementSibling : null;  //  actPost.nextElementSibling;
+                const theNode = listNode.removeChild(actPost);
+                listNode.insertBefore(theNode, nextNextNode);
+            }
+            break;
+        
         default:
             break;
     }
