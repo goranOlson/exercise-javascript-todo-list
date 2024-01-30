@@ -33,7 +33,6 @@ function addNewPost(e) {
         <i class="check fas fa-check"></i>
     </div>
 </article>`;  // fa-square
-
         // console.log(newPost);
 
         const positionText = (flagg_add_last) ? 'beforeend' : 'afterbegin';  // Add first or last
@@ -56,6 +55,9 @@ function listClicked(e) {
         case 'check':
             postNode.classList.toggle('done');
             // console.log(postNode.classList);
+            break;
+        case 'throw':
+            postNode.remove();
             break;
         default:
             break;
