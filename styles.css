@@ -78,7 +78,7 @@ h1 {
     width: 100%;
     height: 200px;
     padding-inline: 30px;
-    overflow: scroll;
+    overflow: auto;  /* scroll */
     /* background-color: #aaa; */
 }
 
@@ -87,8 +87,15 @@ h1 {
     padding: 8px 12px;
     border-radius: 9px;
     background-color: #ddd;
-    background: #88d;
+    background-color: #88d;
 }
+.todo-list .post:hover {
+    background-color: #6767db;
+}
+.todo-list .post.done {
+    background-color: #aaa;
+}
+
 
 .todo-list .post .chore {
     width: 100%;
@@ -101,5 +108,10 @@ h1 {
     align-items: center;
     padding-inline: 8px 4px;
     /* background-color: red; */
+}
+
+.todo-list .post .actions i:hover {
+    cursor: pointer;
+    color: rgb(255, 217, 0);
 }
 
