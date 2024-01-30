@@ -12,11 +12,15 @@ function addNewPost(e) {
     e.preventDefault();
     console.log('--> addNewPost()');
 
+    
     const todoText = e.target.previousElementSibling.value.trim();
+    e.target.previousElementSibling.value = null;
     const id = todoList.children.length + 1;
 
-     console.log(todoText);
-     console.log(id);
+    // console.log(`todoText: ${todoText}`);
+    // console.log(`id: ${id}`);
+
+     console.log(`--> addNewPost('${todoText}') id: ${id}`);
 
     if (todoText) {
         newPost = `
@@ -30,9 +34,9 @@ function addNewPost(e) {
     </div>
 </article>`;
 
-        console.log(newPost);
+        // console.log(newPost);
 
-        const positionText = (flagg_add_last) ? 'beforeend' : 'afterbegin';
+        const positionText = (flagg_add_last) ? 'beforeend' : 'afterbegin';  // Add first or last
         todoList.insertAdjacentHTML(positionText, newPost);
     }
 }
