@@ -1,3 +1,7 @@
+const flagg_add_last = true;
+
+
+//===========================
 const btnNew = document.querySelector('.todo-container .adding button');
 btnNew.addEventListener('click', addNewPost);
 
@@ -6,33 +10,29 @@ todoList.addEventListener('click', listClicked);
  console.log(todoList.children);
 
 
-const flagg_add_last = true;
+
 //===========================
 function addNewPost(e) {
     e.preventDefault();
-    console.log('--> addNewPost()');
 
-    
-    const todoText = e.target.previousElementSibling.value.trim();
-    e.target.previousElementSibling.value = null;
+    const input = e.target.previousElementSibling;
+    const todoText = input.value.trim();
+    input.value = '';
     const id = todoList.children.length + 1;
 
-    // console.log(`todoText: ${todoText}`);
-    // console.log(`id: ${id}`);
-
-     console.log(`--> addNewPost('${todoText}') id: ${id}`);
+    // console.log(`--> addNewPost('${todoText}') id: ${id}`);
 
     if (todoText) {
         newPost = `
 <article id="post_${id}" class="post">
     <div class="chore">${todoText}</div>
     <div class="actions">
-        <i class='fa fa-arrow-up'></i>
-        <i class='fa fa-arrow-down'></i>
-        <i class="fas fa-trash-alt"></i>
-        <i class="far fa-square"></i>
+        <i class='up fa fa-arrow-up'></i>
+        <i class='down fa fa-arrow-down'></i>
+        <i class="throw fas fa-trash-alt"></i>
+        <i class="check fas fa-check"></i>
     </div>
-</article>`;
+</article>`;  // fa-square
 
         // console.log(newPost);
 
@@ -42,7 +42,23 @@ function addNewPost(e) {
 }
 
 function listClicked(e) {
-    console.log('--> listClicked()');
-    console.log(e.target.parentNode);
+    //console.log('--> listClicked()');
+    
+    // get clicked element type (first class)
+    const length = e.target.classList.length;
+    const targetClass = e.target.classList.item(0);
+    // console.log(targetClass);
+
+    const postNode = e.target.parentNode.parentNode;
+
+    // Action
+    switch (targetClass) {
+        case 'check':
+            postNode.classList.toggle('done');
+            // console.log(postNode.classList);
+            break;
+        default:
+            break;
+    }
 }
 
