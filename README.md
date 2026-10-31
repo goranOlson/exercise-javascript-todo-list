@@ -1,5 +1,7 @@
 # Exercise Javascript Todo List
 
+![Alt text](todo.png)
+
 ## Todo List in Vanilla JavaScript
 
 In this exercise I want you to create a todo list in vanilla JavaScript. The todo list is will be simple, not any fancy functionalities or animations _(unless you relly want to get creative)_. The purpose is to solve as much as possible with just DOM manipulation. Below you have a couple of User Stories that are going to follow.
